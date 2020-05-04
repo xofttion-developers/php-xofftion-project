@@ -1,0 +1,32 @@
+{
+    "name": "xofttion/project",
+    "type": "library",
+    "license": "MIT",
+    "description": "Proyecto que contiene a forma de esqueleto las implementaciones de las distintas librerias Xofttion",
+    "keywords": [
+        "xofttion",
+        "project",
+        "routing",
+        "ioc",
+        "soa",
+        "orm",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Daniel Andres Castillo Pedroza",
+            "email": "ing.dacastillop@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "xofttion/soa": "dev-master",
+        "xofttion/routing": "dev-master",
+        "xofttion/ioc": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xofttion\\Project\\": "src/"
+        }
+    }
+}
