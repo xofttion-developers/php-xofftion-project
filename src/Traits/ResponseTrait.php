@@ -4,7 +4,7 @@ namespace Xofttion\Project\Traits;
 
 use Xofttion\Project\Response;
 use Xofttion\Project\Utils\Messages;
-use Xofttion\Project\Utils\HttpCode;;
+use Xofttion\Project\Utils\HttpCode;
 
 trait ResponseTrait {
     

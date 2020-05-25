@@ -82,7 +82,7 @@ class Authenticated implements IAuthenticated {
         }
     }
     
-    public function getValue($key) {
+    public function getValue(string $key) {
         return (!$this->exists()) ? null : $this->getDictionary()->getValue($key); 
     }
 
@@ -90,7 +90,7 @@ class Authenticated implements IAuthenticated {
         $this->attach(static::USER_ID, $id);
     }
     
-    public function getUserId() {
+    public function getUserId(): ?int {
         return $this->getValue(static::USER_ID);
     }
     

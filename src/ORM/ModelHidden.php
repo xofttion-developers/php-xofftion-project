@@ -11,4 +11,14 @@ class ModelHidden extends Model {
     const DELETED_USER = "usuario_id_eliminacion";
     
     const DELETED_AT   = "fechahora_eliminacion";
+    
+    // Métodos sobrescritos de la clase Model
+    
+    protected function getConversionsDefault(): array {
+        return [
+            self::CREATED_AT => "datetime",
+            self::UPDATED_AT => "datetime",
+            self::DELETED_AT => "datetime"
+        ];
+    }
 }

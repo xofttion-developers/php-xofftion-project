@@ -8,13 +8,7 @@ use Xofttion\Project\Utils\HttpCode;
 
 class ProjectException extends Exception {
     
-    // Atributos de la clase ProjectException
-
-    /**
-     *
-     * @var object 
-     */
-    protected $data;
+    // Atributos de la clase ApplicationException
 
     /**
      *
@@ -28,31 +22,30 @@ class ProjectException extends Exception {
      */
     protected $httpcode;
 
+    /**
+     *
+     * @var object 
+     */
+    protected $data;
+
     // Constructor de la clase ApplicationException
     
-    public function __construct(string $message) {
+    public function __construct(string $message, ?int $appcode = null) {
         parent::__construct($message); // Constructor padre
         
-        $this->httpcode = HttpCode::INTERNAL_SERVER_ERROR;
+        $this->setAppCode($appcode);
+        $this->setHttpCode(HttpCode::INTERNAL_SERVER_ERROR);
     }
     
     // Métodos de la clase ApplicationException
     
     /**
      * 
-     * @param mixed $data
+     * @param int|null $code
      * @return void
      */
-    public function setData($data): void {
-        $this->data = $data;
-    }
-    
-    /**
-     * 
-     * @return mixed
-     */
-    public function getData() {
-        return $this->data;
+    protected function setAppCode(?int $code): void {
+        $this->appcode = $code;
     }
 
     /**
@@ -65,10 +58,36 @@ class ProjectException extends Exception {
     
     /**
      * 
+     * @param int $code
+     * @return void
+     */
+    protected function setHttpCode(int $code): void {
+        $this->httpcode = $code;
+    }
+
+    /**
+     * 
      * @return int
      */
     public function getHttpCode(): int {
         return $this->httpcode;
+    }
+    
+    /**
+     * 
+     * @param object $data
+     * @return void
+     */
+    public function setData($data): void {
+        $this->data = $data;
+    }
+    
+    /**
+     * 
+     * @return object
+     */
+    public function getData() {
+        return $this->data;
     }
 
     /**

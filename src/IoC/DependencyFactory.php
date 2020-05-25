@@ -1,6 +1,6 @@
 <?php
 
-namespace Commerce\Infrastructure\ControlInversion;
+namespace Xofttion\Project\IoC;
 
 use Xofttion\IoC\Contracts\IDependencyFactory;
 use Xofttion\IoC\ClassInstance;

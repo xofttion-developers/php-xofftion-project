@@ -9,18 +9,6 @@ use Xofttion\Project\ORM\Utils\ModelMapper;
 
 class Model extends BaseModel {
     
-    // Atributos sobrescritos de clase BaseModel
-    
-    /**
-     *
-     * @var array 
-     */
-    protected $conversionsDefault = [
-        self::CREATED_AT => "datetime",
-        self::UPDATED_AT => "datetime",
-        self::DELETED_AT => "datetime"
-    ];
-    
     // Constantes de clase Model
     
     const PRIMARY_KEY  = "id";
@@ -35,7 +23,14 @@ class Model extends BaseModel {
     
     // Métodos sobrescritos de la clase BaseModel
     
-    protected function getMapper(): IModelMapper {
+    protected function getConversionsDefault(): array {
+        return [
+            self::CREATED_AT => "datetime",
+            self::UPDATED_AT => "datetime"
+        ];
+    }
+    
+    public function getMapper(): IModelMapper {
         return ModelMapper::getInstance();
     }
 }

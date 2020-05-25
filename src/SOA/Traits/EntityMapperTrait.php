@@ -27,17 +27,17 @@ trait EntityMapperTrait {
     
     /**
      * 
-     * @return IEntityMapper
+     * @return IEntityMapper|null
      */
-    public function getEntityMapper(): IEntityMapper {
+    public function getEntityMapper(): ?IEntityMapper {
         return $this->entityMapper;
     }
     
     /**
      * 
-     * @return IEntityMapper
+     * @return IEntityMapper|null
      */
-    public function cleanEntityMapper(): IEntityMapper {
+    public function cleanEntityMapper(): ?IEntityMapper {
         $this->entityMapper->clean(); return $this->getEntityMapper();
     }
 }

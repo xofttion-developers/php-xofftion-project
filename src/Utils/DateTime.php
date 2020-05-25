@@ -32,6 +32,19 @@ class DateTime {
     
     /**
      * 
+     * @param int|null $timestamp
+     * @return string|null
+     */
+    public static function timestampToDateTime(?int $timestamp): ?string {
+        if (is_null($timestamp)) { 
+            return null;
+        } // No esta definido el tiempo
+        
+        return Carbon::createFromTimestamp($timestamp)->toDateTimeString();
+    }
+    
+    /**
+     * 
      * @return int
      */
     public static function getNow(): int {

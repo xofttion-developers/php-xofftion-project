@@ -1,6 +1,6 @@
 <?php
 
-namespace Xofttion\Project;
+namespace Xofttion\Project\Interactors\UoW;
 
 use Exception;
 use Closure;
@@ -14,19 +14,19 @@ use Xofttion\Project\Utils\HttpCode;
 use Xofttion\Project\Response;
 use Xofttion\Project\Exceptions\ProjectException;
 
-class InteractorUoW {
-    use Traits\AuthenticatedTrait;
-    use Traits\ResponseTrait;
-    use SOA\Traits\UnitOfWorkTrait;
-    use SOA\Traits\EntityMapperTrait;
+class BaseInteractor {
+    use \Xofttion\Project\Traits\AuthenticatedTrait;
+    use \Xofttion\Project\Traits\ResponseTrait;
+    use \Xofttion\Project\SOA\Traits\UnitOfWorkTrait;
+    use \Xofttion\Project\SOA\Traits\EntityMapperTrait;
     
-    // Constructor de la clase InteractorUoW
+    // Constructor de la clase BaseInteractor
     
     public function __construct() {
         
     }
     
-    // Métodos de la clase InteractorUoW
+    // Métodos de la clase BaseInteractor
     
     /**
      * 
@@ -69,7 +69,9 @@ class InteractorUoW {
      * @return Response
      */
     protected function controllerTransaction(Closure $callback): Response {
-        $this->getUnitOfWork()->setMapper($this->getEntityMapper());
+        if (is_null($this->getUnitOfWork()->getMapper())) {
+            $this->getUnitOfWork()->setMapper($this->getEntityMapper());
+        }
         
         $this->getUnitOfWork()->transaction(); // Iniciando
         

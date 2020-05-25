@@ -1,6 +1,6 @@
 <?php
 
-namespace Xofttion\Project;
+namespace Xofttion\Project\Interactors\UoS;
 
 use Exception;
 use Closure;
@@ -10,18 +10,18 @@ use Xofttion\Project\Utils\HttpCode;
 use Xofttion\Project\Response;
 use Xofttion\Project\Exceptions\ProjectException;
 
-class InteractorUoS {
-    use Traits\AuthenticatedTrait;
-    use Traits\ResponseTrait;
-    use SOA\Traits\UnitOfStorageTrait;
+class BaseInteractor {
+    use \Xofttion\Project\Traits\AuthenticatedTrait;
+    use \Xofttion\Project\Traits\ResponseTrait;
+    use \Xofttion\Project\SOA\Traits\UnitOfStorageTrait;
     
-    // Constructor de la clase InteractorUoS
+    // Constructor de la clase BaseInteractor
     
     public function __construct() {
         
     }
     
-    // Métodos de la clase InteractorUoS
+    // Métodos de la clase BaseInteractor
     
     /**
      * 
