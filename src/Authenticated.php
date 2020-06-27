@@ -2,9 +2,10 @@
 
 namespace Xofttion\Project;
 
-use Xofttion\Project\Contracts\IAuthenticated;
-
+use Xofttion\Kernel\Contracts\IDataDictionary;
 use Xofttion\Kernel\Structs\DataDictionary;
+
+use Xofttion\Project\Contracts\IAuthenticated;
 
 class Authenticated implements IAuthenticated {
     
@@ -12,13 +13,19 @@ class Authenticated implements IAuthenticated {
     
     /**
      *
-     * @var Authenticated 
+     * @var IAuthenticated 
      */
     private static $instance = null;
     
-    // Constantes de la clase Authenticated
+    // Atributos de la clase Authenticated
     
-    protected const KEY     = "xofttion";
+    /**
+     *
+     * @var IDataDictionary 
+     */
+    protected $resources;
+
+    // Constantes de la clase Authenticated
     
     protected const USER_ID = "user_id";
 
@@ -34,7 +41,7 @@ class Authenticated implements IAuthenticated {
      * 
      * @return Authenticated
      */
-    public static function getInstance(): Authenticated {
+    public static function getInstance(): IAuthenticated {
         if (is_null(self::$instance)) {
             self::$instance = new static(); // Instanciando Authenticated
         } 
@@ -44,26 +51,26 @@ class Authenticated implements IAuthenticated {
 
     /**
      * 
-     * @return DataDictionary
+     * @return IDataDictionary|null
      */
-    private function getDictionary(): DataDictionary {
-        return $_SESSION[static::KEY];
+    protected function getDictionary(): ?IDataDictionary {
+        return $this->resources;
     }
     
     // Métodos sobrescritos de la interfaz IAuthenticated
     
     public function exists(): bool {
-        return isset($_SESSION[static::KEY]);
+        return !is_null($this->resources);
     }
     
     public function start(): void {
         if (!$this->exists()) { 
-            $_SESSION[static::KEY] = new DataDictionary(); // Instanciando sesión
+            $this->resources = new DataDictionary(); // Instanciando
         }
     }
     
     public function destroy(): void {
-        unset($_SESSION[static::KEY]); session_destroy(); 
+        $this->resources = null;
     }
     
     public function attach(string $key, $value): void {
@@ -92,9 +99,5 @@ class Authenticated implements IAuthenticated {
     
     public function getUserId(): ?int {
         return $this->getValue(static::USER_ID);
-    }
-    
-    public function getKey(): string {
-       return static::KEY; 
     }
 }

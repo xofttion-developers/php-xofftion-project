@@ -6,6 +6,22 @@ use Carbon\Carbon;
 
 class DateTime {
     
+    // Constantes de la clase DateTime
+    
+    const YEAR   = 60 * 60 * 24 * 365;
+    
+    const MONTH  = 60 * 60 * 24 * 30;
+    
+    const WEEK   = 60 * 60 * 24 * 7;
+    
+    const DAY    = 60 * 60 * 24;
+    
+    const HOUR   = 60 * 60;
+    
+    const MINUTE = 60;
+    
+    const SECOND = 1;
+
     // Métodos estáticos de la clase DateTime
     
     /**

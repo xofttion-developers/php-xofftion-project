@@ -64,10 +64,4 @@ interface IAuthenticated {
      * @return int|null
      */
     public function getUserId(): ?int;
-    
-    /**
-     * 
-     * @return string
-     */
-    public function getKey(): string;
 }

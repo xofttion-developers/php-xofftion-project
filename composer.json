@@ -22,11 +22,15 @@
     "require": {
         "xofttion/soa": "dev-master",
         "xofttion/routing": "dev-master",
-        "xofttion/ioc": "dev-master"
+        "xofttion/ioc": "dev-master",
+        "nesbot/carbon": "^2.0"
     },
     "autoload": {
         "psr-4": {
             "Xofttion\\Project\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     }
 }
