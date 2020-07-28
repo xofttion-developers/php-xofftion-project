@@ -68,7 +68,7 @@ trait ResponseTrait {
      * @return Response
      */
     public function responseSuccess(?string $message, $data = null): Response {
-        return new Response(true, $message, HttpCode::OK, $data);
+        return $this->responseKernel(true, $message, $data);
     }
     
     /**
@@ -78,6 +78,17 @@ trait ResponseTrait {
      * @return Response
      */
     public function responseFailed(?string $message, $data = null): Response {
-        return new Response(false, $message, HttpCode::OK, $data);
+        return $this->responseKernel(false, $message, $data);
+    }
+    
+    /**
+     * 
+     * @param bool $success
+     * @param string|null $message
+     * @param type $data
+     * @return Response
+     */
+    public function responseKernel(bool $success, ?string $message, $data = null): Response {
+        return new Response($success, $message, HttpCode::OK, $data);
     }
 }
