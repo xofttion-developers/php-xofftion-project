@@ -2,8 +2,8 @@
 
 namespace Xofttion\Project;
 
-use Xofttion\Kernel\Contracts\IDataDictionary;
-use Xofttion\Kernel\Structs\DataDictionary;
+use Xofttion\Kernel\Contracts\IJson;
+use Xofttion\Kernel\Structs\Json;
 
 use Xofttion\Project\Contracts\IAuthenticated;
 
@@ -21,7 +21,7 @@ class Authenticated implements IAuthenticated {
     
     /**
      *
-     * @var IDataDictionary 
+     * @var IJson 
      */
     protected $resources;
 
@@ -51,9 +51,9 @@ class Authenticated implements IAuthenticated {
 
     /**
      * 
-     * @return IDataDictionary|null
+     * @return IJson|null
      */
-    protected function getDictionary(): ?IDataDictionary {
+    protected function getDictionary(): ?IJson {
         return $this->resources;
     }
     
@@ -65,7 +65,7 @@ class Authenticated implements IAuthenticated {
     
     public function start(): void {
         if (!$this->exists()) { 
-            $this->resources = new DataDictionary(); // Instanciando
+            $this->resources = new Json(); // Instanciando
         }
     }
     

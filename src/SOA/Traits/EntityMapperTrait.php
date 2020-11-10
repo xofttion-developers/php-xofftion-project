@@ -2,6 +2,9 @@
 
 namespace Xofttion\Project\SOA\Traits;
 
+use Xofttion\Kernel\Contracts\IDataTransfer;
+
+use Xofttion\SOA\Contracts\IEntity;
 use Xofttion\SOA\Contracts\IEntityMapper;
 
 trait EntityMapperTrait {
@@ -39,5 +42,19 @@ trait EntityMapperTrait {
      */
     public function cleanEntityMapper(): ?IEntityMapper {
         $this->entityMapper->clean(); return $this->getEntityMapper();
+    }
+
+    /**
+     * 
+     * @param IEntity|string $entity
+     * @param IDataTransfer $sourceJson
+     * @return IEntity
+     */
+    public function mapper($entity, IDataTransfer $sourceJson): IEntity {
+        if (!($entity instanceof IEntity)) {
+            return $this->cleanEntityMapper()->ofArray(new $entity(), $sourceJson->toArray());
+        } else {
+            return $this->cleanEntityMapper()->ofArray($entity, $sourceJson->toArray());
+        }
     }
 }

@@ -42,4 +42,12 @@ trait UnitOfWorkTrait {
     public function getRepository(string $classEntity): IRepository {
         return $this->getUnitOfWork()->getRepository($classEntity);
     }
+    
+    /**
+     * 
+     * @return int
+     */
+    function getNow(): int {
+        return $this->getUnitOfWork()->getNow();
+    }
 }

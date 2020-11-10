@@ -6,10 +6,6 @@ use Exception;
 use Closure;
 use Illuminate\Database\QueryException;
 
-use Xofttion\Kernel\Contracts\IDataTransfer;
-
-use Xofttion\SOA\Contracts\IEntity;
-
 use Xofttion\Project\Utils\HttpCode;
 use Xofttion\Project\Response;
 use Xofttion\Project\Exceptions\ProjectException;
@@ -27,28 +23,6 @@ class BaseInteractor {
     }
     
     // Métodos de la clase BaseInteractor
-    
-    /**
-     * 
-     * @return int
-     */
-    function getNow(): int {
-        return $this->getUnitOfWork()->getNow();
-    }
-
-    /**
-     * 
-     * @param IEntity|string $entity
-     * @param IDataTransfer $source
-     * @return IEntity
-     */
-    public function mapper($entity, IDataTransfer $source): IEntity {
-        if (!($entity instanceof IEntity)) {
-            return $this->cleanEntityMapper()->ofArray(new $entity(), $source->toArray());
-        } else {
-            return $this->cleanEntityMapper()->ofArray($entity, $source->toArray());
-        }
-    }
 
     /**
      * 
