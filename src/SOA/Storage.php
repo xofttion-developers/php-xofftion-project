@@ -16,7 +16,7 @@ class Storage extends BaseStorage {
         if (!$this->isModelHidden()) {
             return $this->getQuery()->catalog(); // Retornando catálogo predeterminado
         } else {
-            return $this->getQuery()->whereEqual(ModelHidden::DELETED_ROW, false)->catalog();
+            return $this->getQuery()->equal(ModelHidden::DELETED_ROW, false)->catalog();
         }
     }
     

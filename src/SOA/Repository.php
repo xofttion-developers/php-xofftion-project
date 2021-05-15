@@ -17,7 +17,7 @@ class Repository extends BaseRepository {
         $query  = $this->getQuery($entity);
         
         if ($entity instanceof EntityHidden) {
-            $query->whereEqual(ModelHidden::DELETED_ROW, false);
+            $query->equal(ModelHidden::DELETED_ROW, false);
         } // Se debe agregar filtro para ignorar registros
         
         return $this->createCollection($query->catalog());
