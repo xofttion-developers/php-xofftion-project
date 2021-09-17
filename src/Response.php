@@ -2,36 +2,37 @@
 
 namespace Xofttion\Project;
 
-class Response {
-    
+class Response
+{
+
     // Atributos de la clase Response
-    
+
     /**
      *
      * @var bool 
      */
     private $success;
-    
+
     /**
      *
      * @var int 
      */
     private $code;
-    
+
     /**
      *
      * @var array 
      */
     private $data;
-    
+
     /**
      *
      * @var string 
      */
     private $message;
-    
+
     // Constructor de la clase Response
-    
+
     /**
      * 
      * @param bool $success
@@ -39,28 +40,31 @@ class Response {
      * @param int $code
      * @param object $data
      */
-    public function __construct(bool $success, ?string $message, int $code, $data = null) {
-        $this->success = $success; 
-        $this->code    = $code; 
-        $this->data    = $data; 
-        $this->message = $message; 
+    public function __construct(bool $success, ?string $message, int $code, $data = null)
+    {
+        $this->success = $success;
+        $this->code = $code;
+        $this->data = $data;
+        $this->message = $message;
     }
-    
+
     // Métodos de la clase Response
-    
+
     /**
      * 
      * @return bool
      */
-    public function isSuccess(): bool {
+    public function isSuccess(): bool
+    {
         return $this->success;
     }
-    
+
     /**
      * 
      * @return string|null
      */
-    public function getMessage(): ?string {
+    public function getMessage(): ?string
+    {
         return $this->message;
     }
 
@@ -68,7 +72,8 @@ class Response {
      * 
      * @return int
      */
-    public function getCode(): int {
+    public function getCode(): int
+    {
         return $this->code;
     }
 
@@ -76,7 +81,8 @@ class Response {
      * 
      * @return object
      */
-    public function getData() {
+    public function getData()
+    {
         return $this->data;
     }
 
@@ -84,10 +90,11 @@ class Response {
      * 
      * @return array
      */
-    public function toJson(): array {
+    public function toJson(): array
+    {
         return [
             "success" => $this->success,
-            "data"    => $this->data,
+            "data" => $this->data,
             "message" => $this->message
         ];
     }

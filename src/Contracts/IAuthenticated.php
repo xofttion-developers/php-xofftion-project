@@ -2,36 +2,44 @@
 
 namespace Xofttion\Project\Contracts;
 
-interface IAuthenticated {
-    
+interface IAuthenticated
+{
+
     // Métodos de la interfaz IAuthenticated
-    
+
     /**
      * 
      * @return bool
      */
     public function exists(): bool;
-    
+
     /**
      * 
      * @return void
      */
     public function start(): void;
-    
+
     /**
      * 
      * @return void
      */
     public function destroy(): void;
-    
+
     /**
      * 
      * @param string $key
-     * @param object $value
+     * @param mixed $value
      * @return void
      */
     public function attach(string $key, $value): void;
-    
+
+    /**
+     * 
+     * @param string $key
+     * @return void
+     */
+    public function detach(string $key): void;
+
     /**
      * 
      * @param string $key
@@ -41,23 +49,16 @@ interface IAuthenticated {
 
     /**
      * 
-     * @param string $key
-     * @return void
-     */
-    public function detach(string $key): void;
-    
-    /**
-     * 
-     * @param object $key
+     * @param mixed $key
      */
     public function getValue(string $key);
-    
+
     /**
      * 
      * @param int $id
      * @return void
      */
-    public function attachUserId(int $id): void;
+    public function putUserId(int $id): void;
 
     /**
      * 

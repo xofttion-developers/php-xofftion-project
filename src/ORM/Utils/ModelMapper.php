@@ -6,19 +6,29 @@ use Carbon\Carbon;
 
 use Xofttion\ORM\Utils\ModelMapper as BaseModelMapper;
 
-class ModelMapper extends BaseModelMapper {
-    
+class ModelMapper extends BaseModelMapper
+{
+
     // Métodos sobrescritos de la clase BaseModelMapper
-    
-    protected function getValueConvert(string $type, $value) {
+
+    protected function getValueConvert(string $type, $value)
+    {
         switch ($type) {
-            case ("datetime") :
+            case ("datetime"): {
                 return Carbon::createFromTimestamp($value)->toDateTimeString();
-                
-            case ("date") :
+            }
+
+            case ("date"): {
                 return Carbon::createFromTimestamp($value)->toDateString();
-                
-            default : return $value; // Valor predeterminado establecido en array
+            }
+
+            case ("decimal"): {
+                return strval($value);
+            }
+
+            default: {
+                return $value;
+            }
         }
     }
 }
