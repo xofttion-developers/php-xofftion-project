@@ -3,45 +3,49 @@
 namespace Xofttion\Project\SOA\Traits;
 
 use Xofttion\Kernel\Contracts\IDataTransfer;
-
 use Xofttion\SOA\Contracts\IEntity;
 use Xofttion\SOA\Contracts\IEntityMapper;
 
-trait EntityMapperTrait {
-    
+trait EntityMapperTrait
+{
+
     // Atributos del trait EntityMapperTrait
-    
+
     /**
      *
      * @var IEntityMapper 
      */
     private $entityMapper;
-    
+
     // Métodos del trait EntityMapperTrait
-    
+
     /**
      * 
      * @param IEntityMapper $entityMapper
      * @return void
      */
-    public function setEntityMapper(IEntityMapper $entityMapper): void {
+    public function setEntityMapper(IEntityMapper $entityMapper): void
+    {
         $this->entityMapper = $entityMapper;
     }
-    
+
     /**
      * 
      * @return IEntityMapper|null
      */
-    public function getEntityMapper(): ?IEntityMapper {
+    public function getEntityMapper(): ?IEntityMapper
+    {
         return $this->entityMapper;
     }
-    
+
     /**
      * 
      * @return IEntityMapper|null
      */
-    public function cleanEntityMapper(): ?IEntityMapper {
-        $this->entityMapper->clean(); return $this->getEntityMapper();
+    public function cleanEntityMapper(): ?IEntityMapper
+    {
+        $this->entityMapper->clean();
+        return $this->getEntityMapper();
     }
 
     /**
@@ -50,10 +54,12 @@ trait EntityMapperTrait {
      * @param IDataTransfer $sourceJson
      * @return IEntity
      */
-    public function mapper($entity, IDataTransfer $sourceJson): IEntity {
+    public function mapper($entity, IDataTransfer $sourceJson): IEntity
+    {
         if (!($entity instanceof IEntity)) {
             return $this->cleanEntityMapper()->ofArray(new $entity(), $sourceJson->toArray());
-        } else {
+        }
+        else {
             return $this->cleanEntityMapper()->ofArray($entity, $sourceJson->toArray());
         }
     }
