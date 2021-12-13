@@ -20,7 +20,9 @@ class Repository extends BaseRepository
         if ($entity instanceof EntityHidden) {
             $query->equal(ModelHidden::DELETED_ROW, false);
         }
+        
+        $catalog = $query->catalog();
 
-        return $this->createCollection($query->catalog());
+        return $this->createCollection($catalog);
     }
 }

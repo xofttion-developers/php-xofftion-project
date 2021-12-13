@@ -3,7 +3,6 @@
 namespace Xofttion\Project\ORM\Utils;
 
 use Carbon\Carbon;
-
 use Xofttion\ORM\Utils\ModelMapper as BaseModelMapper;
 
 class ModelMapper extends BaseModelMapper

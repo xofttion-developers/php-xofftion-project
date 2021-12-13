@@ -22,8 +22,10 @@ class CrudInteractor extends BaseInteractor
             $entity = $this->getEntityRegister($source);
 
             $this->getUnitOfWork()->persist($entity);
+            
+            $resource = $this->getResourceName();
 
-            return $this->responseRegisted($this->getResourceName(), $entity);
+            return $this->responseRegisted($resource, $entity);
         });
     }
 

@@ -45,22 +45,28 @@ trait EntityMapperTrait
     public function cleanEntityMapper(): ?IEntityMapper
     {
         $this->entityMapper->clean();
-        return $this->getEntityMapper();
+        
+        return $this->entityMapper;
     }
 
     /**
      * 
      * @param IEntity|string $entity
-     * @param IDataTransfer $sourceJson
+     * @param IDataTransfer $source
      * @return IEntity
      */
-    public function mapper($entity, IDataTransfer $sourceJson): IEntity
+    public function mapper($entity, IDataTransfer $source): IEntity
     {
+        $entityMapper = $this->cleanEntityMapper();
+        $sourceJson = $source->toArray();
+        
         if (!($entity instanceof IEntity)) {
-            return $this->cleanEntityMapper()->ofArray(new $entity(), $sourceJson->toArray());
+            $instanceEntity = new $entity();
+            
+            return $entityMapper->ofArray($instanceEntity, $sourceJson);
         }
         else {
-            return $this->cleanEntityMapper()->ofArray($entity, $sourceJson->toArray());
+            return $entityMapper->ofArray($entity, $sourceJson);
         }
     }
 }
