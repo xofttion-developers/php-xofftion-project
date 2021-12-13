@@ -20,9 +20,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "xofttion/soa": "5.8.x-dev",
-        "xofttion/routing": "5.8.x-dev",
-        "xofttion/ioc": "5.8.x-dev",
+        "xofttion/soa": "7.0.x-dev",
+        "xofttion/routing": "7.0.x-dev",
+        "xofttion/ioc": "7.0.x-dev",
         "nesbot/carbon": "^2.0"
     },
     "autoload": {
