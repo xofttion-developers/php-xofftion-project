@@ -8,10 +8,6 @@ use Xofttion\Kernel\JWT\JWT;
 class Token
 {
 
-    // Constantes de la clase Token
-
-    protected const KEY = "X0ftt10N";
-
     // Métodos estáticos de la clase Token
 
     /**
@@ -21,7 +17,9 @@ class Token
      */
     public static function encode(array $data): string
     {
-        return JWT::encode($data, static::KEY);
+        $KEY = env("SECRET_TOKEN", "X0ftt10N");
+        
+        return JWT::encode($data, $KEY);
     }
 
     /**
@@ -31,7 +29,8 @@ class Token
      */
     public static function decode(string $token): stdClass
     {
-        return JWT::decode($token, static::KEY, ["HS256"]);
+        $KEY = env("SECRET_TOKEN", "X0ftt10N");
+        
+        return JWT::decode($token, $KEY, ["HS256"]);
     }
-
 }

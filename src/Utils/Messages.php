@@ -42,7 +42,7 @@ class Messages
      */
     public function getRegisted(string $resource): string
     {
-        return "$resource ha sido registrado (a) correctamente en la Plataforma";
+        return "$resource ha sido registrado(a) correctamente en la Plataforma";
     }
 
     /**
@@ -52,7 +52,7 @@ class Messages
      */
     public function getNotFound(string $resource): string
     {
-        return "$resource solicitado (a) no ha sido encontrado en la Plataforma";
+        return "$resource solicitado(a) no ha sido encontrado en la Plataforma";
     }
 
     /**
@@ -62,7 +62,7 @@ class Messages
      */
     public function getUpdated(string $resource): string
     {
-        return "$resource ha sido actualizado (a) correctamente en la Plataforma";
+        return "$resource ha sido actualizado(a) correctamente en la Plataforma";
     }
 
     /**
@@ -72,7 +72,7 @@ class Messages
      */
     public function getDeleted(string $resource): string
     {
-        return "$resource ha sido eliminado (a) correctamente de la Plataforma";
+        return "$resource ha sido eliminado(a) correctamente de la Plataforma";
     }
 
     /**
@@ -82,7 +82,7 @@ class Messages
      */
     public function getAttached(string $resource): string
     {
-        return "$resource ha sido agregado (a) correctamente en la Plataforma";
+        return "$resource ha sido agregado(a) correctamente en la Plataforma";
     }
 
     /**
@@ -93,6 +93,6 @@ class Messages
      */
     public function getToggleStatus(string $resource, bool $status): string
     {
-        return "$resource fue " . ($status ? "reactivado (a)" : "inactivado (a)") . " para realizar funciones en la Plataforma";
+        return "$resource fue " . ($status ? "reactivado(a)" : "inactivado(a)") . " para realizar funciones en la Plataforma";
     }
 }
